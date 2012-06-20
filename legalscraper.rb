@@ -35,7 +35,7 @@ doc.css('#divContent table tr td table').each do |table|
 end
 
 #pp currentcases.join
-File.open('output.csv', 'w') {|f| f.write(currentcases.join) }
+#File.open('output.csv', 'w') {|f| f.write(currentcases.join) }
 
 agent = Mechanize.new do |a|
   a.set_proxy('surf-proxy.intranet.db.com', 8080)
