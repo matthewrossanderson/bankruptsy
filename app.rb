@@ -1,12 +1,19 @@
 require 'sinatra'
 require 'builder'
 require 'rss'
+require 'rack/cache'
 require './legalscraper.rb'
 
+use Rack::Cache,
+  :metastore  => 'heap:/',
+  :entitystore => 'heap:/'
+
 get '/' do
+  cache_control :public, :must_revalidate, :max_age => 60
   "Hello, world!"
 end
 get '/rss', :provides => ['rss', 'atom', 'xml'] do
+	cache_control :public, :must_revalidate, :max_age => 60
 	scraper = Scrape.new
 	cases = scraper.currentcases	
 	content_type 'application/rss+xml'
@@ -24,5 +31,6 @@ get '/rss', :provides => ['rss', 'atom', 'xml'] do
 		  end
 		end
 	end
+	erb :feed
 end
 
