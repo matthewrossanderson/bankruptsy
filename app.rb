@@ -1,5 +1,4 @@
 require 'sinatra'
-require 'builder'
 require './legalscraper'
 require 'rss'
 require 'rack/cache'
