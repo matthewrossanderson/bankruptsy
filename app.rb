@@ -7,6 +7,8 @@ use Rack::Cache,
   :metastore  => 'heap:/',
   :entitystore => 'heap:/'
 
+set :port, 9494
+
 get '/' do
   cache_control :public, :must_revalidate, :max_age => 60
   "Hello, world!"
