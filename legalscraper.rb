@@ -1,3 +1,8 @@
+require 'httparty'
+require 'nokogiri'
+require 'mechanize'
+
+
 class Scrape
 
 	class DBProxy
