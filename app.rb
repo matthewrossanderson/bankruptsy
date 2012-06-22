@@ -6,11 +6,16 @@ require 'rack/cache'
 use Rack::Cache,
   :metastore  => 'heap:/',
   :entitystore => 'heap:/'
+  
+configure :production do
+  require 'newrelic_rpm'
+end
 
 get '/' do
   cache_control :public, :must_revalidate, :max_age => 60
   "Hello, world!"
 end
+
 get '/rss', :provides => ['rss', 'atom', 'xml'] do
 	cache_control :public, :must_revalidate, :max_age => 60
 	scraper = Scrape.new
