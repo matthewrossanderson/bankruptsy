@@ -1,11 +1,5 @@
 class Scrape
 
-	require 'httparty'
-	require 'pp'
-	require 'nokogiri'
-	require 'rubygems'
-	require 'mechanize'
-
 	class DBProxy
 		include HTTParty
 		http_proxy 'surf-proxy.intranet.db.com', 8080
