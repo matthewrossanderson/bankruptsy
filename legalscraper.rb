@@ -19,7 +19,7 @@ class Scrape
 			:hfCurrPage=>0
 		}
 
-		response = DBProxy.post( baseuri, :body => options )
+		response = HTTParty.post( baseuri, :body => options )
 		doc = Nokogiri.HTML(response)
 		cases = Array.new
 
@@ -42,7 +42,6 @@ class Scrape
 	end
 	
 	def case(url)
-	
 		if /http:\/\/www\.kccllc\.net\/\S*/.match(url)
 			agent = Mechanize.new do |a|
 				a.set_proxy('surf-proxy.intranet.db.com', 8080)

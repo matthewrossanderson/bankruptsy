@@ -2,7 +2,7 @@ require 'sinatra'
 require 'builder'
 require 'rss'
 require 'rack/cache'
-require './legalscraper.rb'
+require './legalscraper'
 
 use Rack::Cache,
   :metastore  => 'heap:/',
