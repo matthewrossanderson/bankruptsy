@@ -29,7 +29,7 @@ get '/rss', :provides => ['rss', 'atom', 'xml'] do
 	  maker.channel.title = "Bankruptsy Feed"
 	  cases.each do |c|
 		  maker.items.new_item do |item|
-			item.id = Time.now.to_f
+			item.id = "#{Time.now.to_f}"
 			item.link = c[:url]
 			item.title = c[:casename]
 			item.updated = Time.now.to_s
